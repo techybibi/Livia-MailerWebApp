@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/remixicon/fonts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/@icon/dripicons" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fullcalendar/timegrid" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/line-awesome/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fullcalendar/daygrid" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fullcalendar/list" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/@fortawesome/fontawesome-free" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fullcalendar/core" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="htdocs" />
+  </component>
+</module>
