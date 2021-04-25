@@ -10,7 +10,9 @@
 	<title>Compose Message</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
-	<script src="https://cdn.ckeditor.com/ckeditor5/<version>/classic/ckeditor.js"></script>
+
+	<script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+
 	<link rel="stylesheet" href="<?php echo base_url()?>css/backend.min0ff5.css?v=1.0.2">
 	<link rel="stylesheet" href="<?php echo base_url()?>vendor/%40fortawesome/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="<?php echo base_url()?>vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
@@ -46,7 +48,7 @@
 							$getEmail = $getEmailQuery->result();
 							foreach($getEmail as $row)
 							{
-								echo '<option value="'.$row->EMAIL.'">'.$row->EMAIL.'</option>';
+								echo '<option value="'.$row->EMAIL.'" selected="">'.$row->EMAIL.'</option>';
 							}
 							?>
 						</select>
@@ -61,7 +63,14 @@
 				<div class="form-group row">
 					<label for="subject" class="col-sm-2 col-form-label">Your Message:</label>
 					<div class="col-md-10">
-						<textarea name="message" class="textarea form-control" rows="5">Enter Your Message</textarea>
+						<textarea name="message"><?php echo date("h:i:s")?></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="subject" class="col-sm-2 col-form-label">One Mail Per </label>
+					<div class="col-sm-3">
+						<input type="text" name="time" value="0"  id="subject" class="form-control" placeholder="Subject">
+						<small id="emailHelp" class="form-text text-muted">Seconds</small>
 					</div>
 				</div>
 				<div class="form-group row align-items-center">
@@ -69,13 +78,6 @@
 						<div class="send-btn pl-3">
 							<button type="submit" class="btn btn-primary">Send</button>
 						</div>
-<!--						<div class="send-panel">-->
-<!--							<label class="ml-2 bg-primary-light rounded" for="file"> <input type="file" id="file" style="display: none"> <a><i class="ri-attachment-line text-primary"></i> </a> </label>-->
-<!--							<label class="ml-2 bg-primary-light rounded"> <a href="javascript:void(0);"> <i class="ri-map-pin-user-line text-primary"></i></a>  </label>-->
-<!--							<label class="ml-2 bg-primary-light rounded"> <a href="javascript:void(0);"> <i class="ri-drive-line text-primary"></i></a>  </label>-->
-<!--							<label class="ml-2 bg-primary-light rounded"> <a href="javascript:void(0);"> <i class="ri-camera-line text-primary"></i></a>  </label>-->
-<!--							<label class="ml-2 bg-primary-light rounded"> <a href="javascript:void(0);"> <i class="ri-user-smile-line text-primary"></i></a>  </label>-->
-<!--						</div>-->
 					</div>
 					<div class="d-flex mr-3 align-items-center">
 						<div class="send-panel float-right">
@@ -93,18 +95,10 @@
 </div>
 <!-- Wrapper End-->
 <?php include('footer.php')?>
+<script>
+	CKEDITOR.replace( 'message' );
+</script>
+
 </body>
 
-
-<!-- Mirrored from iqonic.design/themes/instadash/html/backend/dashboard-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Apr 2021 04:19:31 GMT -->
 </html>
-<script>
-	CKEDITOR.editorConfig = function (config) {
-		config.language = 'en';
-		config.uiColor = '#F7B42C';
-		config.height = 300;
-		config.toolbarCanCollapse = true;
-
-	};
-	CKEDITOR.replace('editor1');
-</script>

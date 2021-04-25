@@ -25,6 +25,7 @@ class Email extends CI_Controller {
 			'subject'	=>	$this->input->post('subject'),
 			'message'	=>	$this->input->post('message')
 		);
+		$sec	=	$this->input->post('time');
 		//$this->load->config('email');
 		$SMTPData = $this->settings_model->getSMTPData();
 		$config = array(
@@ -43,32 +44,29 @@ class Email extends CI_Controller {
 		$this->load->library('email',$config);
 
 		//$from = $this->config->item('smtp_user');
-		$from = $SMTPData[0]['email'];
-		$to = $data['TO'];
-		$subject = $data['subject'];
-		$message = $data['message'];
-		$uid = $this->session->userdata('uid');
-		$_arr= array(
-			'to_id'		=>	$data['TO'],
-			'subject'	=>	$data['subject'],
-			'message'	=>	$data['message'],
-			'uid'		=>	$uid
-		);
+		foreach ($data['TO'] as $adrs)
+		{
+			$from = $SMTPData[0]['email'];
+			$to = $adrs;
+			$subject = $data['subject'];
+			$message = $data['message'];
+			$uid = $this->session->userdata('uid');
 
-		$this->email->set_newline("\r\n");
-		$this->email->from($from);
-		$this->email->to($to);
-		$this->email->subject($subject);
-		$this->email->message($message);
-
-		if ($this->email->send()) {
-			//$this->admin_model->add_msg($_arr);
-			$msg['retnVal'] = "Successfully Send";
-			$this->load->view('user/success',$msg);
-		} else {
-			//show_error($this->email->print_debugger());
-			$msg['retnVal'] = $this->email->print_debugger();
-			$this->load->view('user/success',$msg);
+			$this->email->set_newline("\r\n");
+			$this->email->from($from);
+			$this->email->bcc($to);
+			$this->email->subject($subject);
+			$this->email->message($message);
+			if ($this->email->send()) {
+				//$this->admin_model->add_msg($_arr);
+				$msg['retnVal'] = "Successfully Completed";
+				$this->load->view('user/success',$msg);
+			} else {
+				//show_error($this->email->print_debugger());
+				$msg['retnVal'] = $this->email->print_debugger();
+				$this->load->view('user/success',$msg);
+			}
+			sleep($sec);
 		}
 	}
 

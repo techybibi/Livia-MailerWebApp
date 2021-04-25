@@ -11,15 +11,15 @@
 				<div class="iq-navbar-logo d-flex align-items-center justify-content-between">
 					<i class="ri-menu-line wrapper-menu"></i>
 					<a href="<?php echo base_url()?>" class="header-logo">
-						<img src="" class="img-fluid rounded-normal light-logo" alt="logo">
-						<!--<img src="https://rajagiri.edu/images/logo.png" class="img-fluid rounded-normal darkmode-logo" alt="logo">-->
+<!--						<img src="--><?php //echo base_url().'images/logo.png'?><!--" class="img-fluid rounded-normal light-logo" alt="logo">-->
+						<img src="<?php echo base_url().'images/logo.png'?>" class="img-fluid rounded-normal darkmode-logo pl-5" alt="logo">
 					</a>
 				</div>
 				<div class="iq-menu-horizontal">
 					<nav class="iq-sidebar-menu">
 						<div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
 							<a href="index.html" class="header-logo">
-								<img src="" class="img-fluid rounded-normal" alt="logo">
+								<img src="<?php echo base_url().'images/logo.png'?>" class="img-fluid rounded-normal" alt="logo">
 							</a>
 							<div class="iq-menu-bt-sidebar">
 								<i class="las la-bars wrapper-menu"></i>
@@ -103,7 +103,7 @@
 							aria-label="Toggle navigation">
 						<i class="ri-menu-3-line"></i>
 					</button>
-							<div class="caption-content">
+							<div class="caption-content pr-5">
 								<a href="<?php echo base_url()?>student/profile/<?php echo $this->session->userdata('uid')?>"><button class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
 											<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
 											<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>

@@ -10,7 +10,7 @@ class Settings_model extends CI_Model {
 		$this->db->where('SMTP_ID', $data['SMTP_ID']);
 		$dbdata = array(
 			"protocol" 			=> $data['protocol'],
-			"email" 			=> $data['protocol'],
+			"email" 			=> $data['email'],
 			"smtp_host" 		=> $data['smtp_host'],
 			"smtp_port" 		=> $data['smtp_port'],
 			"smtp_user" 		=> $data['smtp_user'],
