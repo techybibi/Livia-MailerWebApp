@@ -29,17 +29,18 @@ class Subscribers extends CI_Controller {
 			try{
 				$this->form_validation->set_rules('fullName', 'Name', 'required');
 				$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email|is_unique[livia_subscribers.EMAIL]');
+				$this->form_validation->set_rules('group', 'Group Name', 'required');
 
 				if($this->form_validation->run())
 				{
 					$_data = array(
 						'EMAIL'			=>	$this->input->post('email'),
 						'NAME'			=>	$this->input->post('fullName'),
+						'GROUP'			=>	$this->input->post('group'),
 						'STATUS'		=>	"Active"
 					);
 					$id = $this->subscriber_model->addUser($_data);
-					$this->load->view('user/subscribers');
-
+					header('Location:'.base_url().'subscribers');
 				}
 				else{
 					$msg['retnVal'] = validation_errors();
@@ -60,6 +61,7 @@ class Subscribers extends CI_Controller {
 			//var_dump($subData);
 			$_arr = array(
 			'UID'		=>		$subData[0]['UID'],
+			'GROUP'		=>		$subData[0]['GROUP'],
 			'EMAIL'		=>		$subData[0]['EMAIL'],
 			'NAME'		=>		$subData[0]['NAME']
 			);
@@ -80,6 +82,7 @@ class Subscribers extends CI_Controller {
 			try{
 				$this->form_validation->set_rules('fullName', 'Name', 'required');
 				$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email');
+				$this->form_validation->set_rules('group', 'Group Name', 'required');
 
 				if($this->form_validation->run())
 				{
@@ -87,11 +90,11 @@ class Subscribers extends CI_Controller {
 						'UID'			=>	$UID,
 						'EMAIL'			=>	$this->input->post('email'),
 						'NAME'			=>	$this->input->post('fullName'),
+						'GROUP'			=>	$this->input->post('group'),
 						'STATUS'		=>	"Active"
 					);
 					$id = $this->subscriber_model->updateUser($_data);
-					$this->load->view('user/subscribers');
-
+					header('Location:'.base_url().'subscribers');
 				}
 				else{
 					$msg['retnVal'] = validation_errors();
@@ -113,7 +116,7 @@ class Subscribers extends CI_Controller {
 		}
 		else{
 			$id = $this->subscriber_model->deleteUser($uid);
-			$this->load->view('user/subscribers');
+			header('Location:'.base_url().'subscribers');
 		}
 	}
 }

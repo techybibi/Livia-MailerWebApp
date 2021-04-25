@@ -33,6 +33,25 @@
 					</div>
 					<div class="card-body">
 						<form method="post" action="<?php echo base_url()?>subscribers/add_user">
+							<div class="col-12">
+								<div class="form-group">
+									<label for="exampleFormControlSelect1">Group</label>
+									<select class="form-control" name="group" id="exampleFormControlSelect1">
+										<option>Select a group</option>
+										<?php
+										$getGroupQuery=$this->db->query("select * from livia_group");
+										$getGroup = $getGroupQuery->result();
+										$i=1;
+										foreach($getGroup as $row)
+										{
+											echo "<option value=".$row->GName.">".$row->GName."</option>";
+										}
+										?>
+										<small id="emailHelp" class="form-text text-muted">Want to create a Group: <a href="<?php echo base_url()?>group">Click Here</a></small>
+									</select>
+								</div>
+							</div>
+
 							<div class="col-6 float-right">
 								<div class="form-group">
 									<label for="exampleInputPassword1">Email Address</label>
@@ -70,7 +89,7 @@
 								<th scope="col">#</th>
 								<th scope="col">Full Name</th>
 								<th scope="col">Email</th>
-								<th scope="col">Status</th>
+								<th scope="col">GROUP</th>
 								<th scope="col">Action</th>
 							</tr>
 							</thead>
@@ -85,7 +104,7 @@
 								<th scope="row"><?php echo $i ?></th>
 								<td><?php echo $row->NAME ?></td>
 								<td><?php echo $row->EMAIL ?></td>
-								<td><?php echo $row->STATUS ?></td>
+								<td><?php echo $row->GROUP ?></td>
 								<td><a href="<?php echo base_url().'subscribers/edit/'.$row->UID ?>" class="btn btn-primary">Edit</a> <a href="<?php echo base_url().'subscribers/delete/'.$row->UID ?>" class="btn btn-danger">Delete</a></td>
 							</tr>
 							<?php $i++; }?>

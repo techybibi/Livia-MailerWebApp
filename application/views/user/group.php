@@ -32,43 +32,54 @@
 						Add New Subscriber
 					</div>
 					<div class="card-body">
-						<form method="post" action="<?php echo base_url()?>subscribers/update_user/<?php echo $UID?>">
+						<form method="post" action="<?php echo base_url()?>group/add_group">
 							<div class="col-12">
 								<div class="form-group">
-									<label for="exampleFormControlSelect1">Group</label>
-									<select class="form-control" name="group" id="exampleFormControlSelect1">
-										<option>Select a group</option>
-										<?php
-										$getGroupQuery=$this->db->query("select * from livia_group");
-										$getGroup = $getGroupQuery->result();
-										$i=1;
-										foreach($getGroup as $row)
-										{
-											echo "<option value=".$row->GName.">".$row->GName."</option>";
-										}
-										?>
-										<small id="emailHelp" class="form-text text-muted">Want to create a Group: <a href="<?php echo base_url()?>group">Click Here</a></small>
-									</select>
-								</div>
-							</div>
-							<div class="col-6 float-right">
-								<div class="form-group">
-									<label for="exampleInputPassword1">Email Address</label>
-									<input type="email" name="email" value="<?php echo $EMAIL?>" class="form-control border border-success" id="exampleInputPassword1" required>
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<label for="exampleInputEmail1">Full Name</label>
-									<input type="text" name="fullName" value="<?php echo $NAME?>" class="form-control border border-success" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+									<label for="exampleInputPassword1">Group Name</label>
+									<input type="text" name="gpName" class="form-control border border-success" id="exampleInputPassword1" required>
 								</div>
 							</div>
 					</div>
 					<div class="card-footer">
-						<button type="submit" class="btn btn-success">Update Subscriber</button>
+						<button type="submit" class="btn btn-success">Add Group</button>
 					</div>
 
 					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card border border-success">
+					<div class="card-header bg-success">
+						All Subscriber
+					</div>
+					<div class="card-body">
+						<table class="table">
+							<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Group Name</th>
+								<th scope="col">Action</th>
+							</tr>
+							</thead>
+							<tbody class="text-dark">
+							<?php
+							$i=1;
+							$getSubDataQuery = $this->db->query("SELECT * FROM livia_group GROUP BY GID DESC");
+							$subData = $getSubDataQuery->result();
+							foreach ($subData as $row){
+								?>
+								<tr>
+									<th scope="row"><?php echo $i ?></th>
+									<td><?php echo $row->GName ?></td>
+									<td><a href="<?php echo base_url().'group/edit/'.$row->GID ?>" class="btn btn-primary">Edit</a> <a href="<?php echo base_url().'group/delete/'.$row->GID ?>" class="btn btn-danger">Delete</a></td>
+								</tr>
+								<?php $i++; }?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

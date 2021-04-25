@@ -24,6 +24,7 @@ class Subscriber_model extends CI_Model {
 		$dbdata = array(
 			"EMAIL" 		=> $data['EMAIL'],
 			"NAME" 			=> $data['NAME'],
+			"GROUP" 			=> $data['GROUP'],
 			"STATUS" 		=> $data['STATUS'],
 		);
 		$this->db->update('livia_subscribers', $dbdata);
