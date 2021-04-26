@@ -12,7 +12,6 @@
 					<i class="ri-menu-line wrapper-menu"></i>
 					<a href="<?php echo base_url()?>" class="header-logo">
 						<img src="<?php echo base_url().'images/logo.png'?>" class="img-fluid rounded-normal light-logo pl-5" alt="logo3">
-<!--						<img src="--><?php //echo base_url().'images/logo.png'?><!--" class="img-fluid rounded-normal darkmode-logo pl-5" alt="logo2">-->
 					</a>
 				</div>
 				<div class="iq-menu-horizontal">

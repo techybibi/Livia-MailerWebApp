@@ -43,7 +43,7 @@
 				<div class="form-group row">
 					<label for="multiple" class="col-sm-2 col-form-label">Select Group</label>
 					<div class="col-sm-10">
-						<select class="form-control" name="group" id="group">
+						<select class="form-control" name="group" id="group" required>
 							<option>Select a group</option>
 							<option value="all">All</option>
 							<?php
@@ -62,34 +62,25 @@
 					<label for="multiple" class="col-sm-2 col-form-label">To:</label>
 					<div class="col-sm-10">
 						<select name="to[]"  id="to_id" class="js-states form-control" multiple>
-<!---->
-<!--							--><?php
-//							$getEmailQuery=$this->db->query("SELECT * FROM livia_subscribers");
-//							$getEmail = $getEmailQuery->result();
-//							foreach($getEmail as $row)
-//							{
-//								echo '<option value="'.$row->EMAIL.'" selected="">'.$row->EMAIL.'</option>';
-//							}
-//							?>
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="subject" class="col-sm-2 col-form-label">Subject:</label>
 					<div class="col-sm-10">
-						<input type="text" name="subject"  id="subject" class="form-control" placeholder="Subject">
+						<input type="text" name="subject"  id="subject" class="form-control" placeholder="Subject" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="subject" class="col-sm-2 col-form-label">Your Message:</label>
 					<div class="col-md-10">
-						<textarea name="message"><?php echo date("h:i:s")?></textarea>
+						<textarea name="message" placeholder="Enter Your Message" required></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="subject" class="col-sm-2 col-form-label">One Mail Per </label>
 					<div class="col-sm-3">
-						<input type="text" name="time" value="0"  id="subject" class="form-control" placeholder="Subject">
+						<input type="text" name="time" value="0"  id="subject" class="form-control" required>
 						<small id="emailHelp" class="form-text text-muted">Seconds</small>
 					</div>
 				</div>

@@ -77,11 +77,11 @@
 							</div>
 					</div>
 					<div class="card-footer">
-							<div class="float-right">
 								<button type="submit" class="btn btn-success">Add Subscriber</button>
-							</div>
 						</form>
-						<div class="col-12" id="importFrm">
+					</div>
+					<div class="card-footer">
+						<div class="col-12 d-flex justify-content-center" id="importFrm">
 							<form action="<?php echo base_url('members/import'); ?>" method="post" enctype="multipart/form-data">
 								<input type="file" name="file" />
 								<input type="submit" class="btn btn-success" name="importSubmit" value="IMPORT">

@@ -44,9 +44,9 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Protocol</label>
 									<select class="form-control" name="protocol" id="exampleFormControlSelect1">
-										<option value="mail">mail</option>
-										<option value="sendmail">sendmail</option>
-										<option value="smtp">smtp</option>
+										<option value="mail" <?php if($protocol=="mail") echo 'selected="selected"'; ?>>mail</option>
+										<option value="sendmail" <?php if($protocol=="sendmail") echo 'selected="selected"'; ?>>sendmail</option>
+										<option value="smtp" <?php if($protocol=="smtp") echo 'selected="selected"'; ?>>smtp</option>
 									</select>
 								</div>
 							</div>
@@ -61,9 +61,9 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">SMTP Crypto</label>
 									<select class="form-control" name="crypto" id="exampleFormControlSelect1">
-										<option selected>Select Any</option>
-										<option value="ssl">SSL</option>
-										<option value="tls">TLS</option>
+										<option>Select Any</option>
+										<option value="ssl" <?php if($smtp_crypto=="ssl") echo 'selected="selected"'; ?>>SSL</option>
+										<option value="tls" <?php if($smtp_crypto=="tls") echo 'selected="selected"'; ?>>TLS</option>
 									</select>
 								</div>
 							</div>
@@ -91,9 +91,9 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Mail Type</label>
 									<select class="form-control" name="type" id="exampleFormControlSelect1">
-										<option selected>Select Any</option>
-										<option value="text">Text</option>
-										<option value="html">HTML</option>
+										<option>Select Any</option>
+										<option value="text" <?php if($mailtype=="text") echo 'selected="selected"'; ?>>Text</option>
+										<option value="html" <?php if($mailtype=="html") echo 'selected="selected"'; ?>>HTML</option>
 									</select>
 								</div>
 							</div>

@@ -8,7 +8,7 @@
 <!--				</ul>-->
 			</div>
 			<div class="col-lg-12 text-center">
-				Copyright 2021 Developed with &#x2764;&#xfe0f; By <a href="https://bibithmathew.in/">Techy Bibi</a> From <a href="https://bibithmathew.in/">Talkbate Digital Partners</a> All Rights Reserved.
+				Livia Mailer V0.1 | Copyright 2021 All Rights Reserved | Developed with &#x2764;&#xfe0f; By <a href="https://bibithmathew.in/">Techy Bibi</a> From <a href="https://bibithmathew.in/">Talkbate Digital Partners</a>
 			</div>
 		</div>
 	</div>

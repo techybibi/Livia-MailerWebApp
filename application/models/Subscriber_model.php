@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Subscriber_model extends CI_Model {
 	function addUser($data)
 	{

@@ -33,7 +33,7 @@ class Login extends CI_Controller {
 				$result = $this->login_model->can_login($data['email'], $data['password']);
 				if($result['VALUE'] == true)
 				{
-						header('Location:'.base_url().'home');
+					$this->load->view('user/index');
 				}
 				else
 				{
@@ -109,3 +109,4 @@ class Login extends CI_Controller {
 
 
 }
+?>

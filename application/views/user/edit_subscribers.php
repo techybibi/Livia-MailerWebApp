@@ -44,9 +44,9 @@
 										$getGroup = $getGroupQuery->result();
 										$i=1;
 										foreach($getGroup as $row)
-										{
-											echo '<option value="'.$row->GName.'">'.$row->GName.'</option>';
-										}
+										{?>
+											<option value="<?php echo $row->GName ?>" <?php if($GRP==$row->GName) echo 'selected="selected"'; ?>><?php echo $row->GName?></option>
+										<?php }
 										?>
 										<small id="emailHelp" class="form-text text-muted">Want to create a Group: <a href="<?php echo base_url()?>group">Click Here</a></small>
 									</select>
