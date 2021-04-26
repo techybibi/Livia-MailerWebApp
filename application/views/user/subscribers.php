@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Welcome To Dashboard</title>
+	<title>Subscribers | Livia Mailer</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
 
@@ -26,6 +26,17 @@
 <div class="content-page">
 	<div class="container">
 		<div class="row">
+			<!-- Display status message -->
+			<?php if(!empty($success_msg)){ ?>
+			<div class="col-xs-12">
+				<div class="alert alert-success"><?php echo $success_msg; ?></div>
+			</div>
+			<?php } ?>
+			<?php if(!empty($error_msg)){ ?>
+				<div class="col-xs-12">
+					<div class="alert alert-danger"><?php echo $error_msg; ?></div>
+				</div>
+			<?php } ?>
 			<div class="col-lg-12">
 				<div class="card border border-success">
 					<div class="card-header bg-success">
@@ -44,7 +55,7 @@
 										$i=1;
 										foreach($getGroup as $row)
 										{
-											echo "<option value=".$row->GName.">".$row->GName."</option>";
+											echo '<option value="'.$row->GName.'">'.$row->GName.'</option>';
 										}
 										?>
 										<small id="emailHelp" class="form-text text-muted">Want to create a Group: <a href="<?php echo base_url()?>group">Click Here</a></small>
@@ -62,16 +73,21 @@
 									<div class="form-group">
 										<label for="exampleInputEmail1">Full Name</label>
 										<input type="text" name="fullName" class="form-control border border-success" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 									</div>
 							</div>
 					</div>
 					<div class="card-footer">
-						<button type="submit" class="btn btn-success">Add Subscriber</button>
-						<button type="submit" class="btn btn-primary">Upload List</button>
+							<div class="float-right">
+								<button type="submit" class="btn btn-success">Add Subscriber</button>
+							</div>
+						</form>
+						<div class="col-12" id="importFrm">
+							<form action="<?php echo base_url('members/import'); ?>" method="post" enctype="multipart/form-data">
+								<input type="file" name="file" />
+								<input type="submit" class="btn btn-success" name="importSubmit" value="IMPORT">
+							</form>
+						</div>
 					</div>
-
-					</form>
 				</div>
 			</div>
 		</div>
@@ -104,7 +120,7 @@
 								<th scope="row"><?php echo $i ?></th>
 								<td><?php echo $row->NAME ?></td>
 								<td><?php echo $row->EMAIL ?></td>
-								<td><?php echo $row->GROUP ?></td>
+								<td><?php echo $row->GRP ?></td>
 								<td><a href="<?php echo base_url().'subscribers/edit/'.$row->UID ?>" class="btn btn-primary">Edit</a> <a href="<?php echo base_url().'subscribers/delete/'.$row->UID ?>" class="btn btn-danger">Delete</a></td>
 							</tr>
 							<?php $i++; }?>

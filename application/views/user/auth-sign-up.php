@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Insta Dash | Responsive Bootstrap 4 Admin Dashboard Template</title>
+	<title>Register | Livia Mailer</title
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
@@ -39,6 +39,8 @@
 				<div class="col-12">
 					<div class="row align-items-center">
 						<div class="col-lg-6">
+							<img src="<?php echo base_url().'images/logo.png'?>" class="img-fluid rounded-normal light-logo pl-5" alt="logo3">
+
 							<h2 class="mb-2">Sign Up</h2>
 							<p>To Keep connected with us please login with your personal info.</p>
 							<form action="<?php echo base_url()?>register/validation" method="post">
@@ -60,9 +62,6 @@
 											<input class="floating-input form-control border border-primary" type="password" name="password" value="<?php echo set_value('password');?>">
 											<label>Password</label>
 										</div>
-									</div>
-									<div class="col-lg-6">
-										<a href="auth-recoverpw.html" class="text-primary float-right">Forgot Password?</a>
 									</div>
 								</div>
 								<button type="submit" class="btn btn-primary">Sign In</button>

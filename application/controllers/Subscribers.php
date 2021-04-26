@@ -36,7 +36,7 @@ class Subscribers extends CI_Controller {
 					$_data = array(
 						'EMAIL'			=>	$this->input->post('email'),
 						'NAME'			=>	$this->input->post('fullName'),
-						'GROUP'			=>	$this->input->post('group'),
+						'GRP'			=>	$this->input->post('group'),
 						'STATUS'		=>	"Active"
 					);
 					$id = $this->subscriber_model->addUser($_data);
@@ -61,7 +61,7 @@ class Subscribers extends CI_Controller {
 			//var_dump($subData);
 			$_arr = array(
 			'UID'		=>		$subData[0]['UID'],
-			'GROUP'		=>		$subData[0]['GROUP'],
+			'GRP'		=>		$subData[0]['GRP'],
 			'EMAIL'		=>		$subData[0]['EMAIL'],
 			'NAME'		=>		$subData[0]['NAME']
 			);
@@ -90,7 +90,7 @@ class Subscribers extends CI_Controller {
 						'UID'			=>	$UID,
 						'EMAIL'			=>	$this->input->post('email'),
 						'NAME'			=>	$this->input->post('fullName'),
-						'GROUP'			=>	$this->input->post('group'),
+						'GRP'			=>	$this->input->post('group'),
 						'STATUS'		=>	"Active"
 					);
 					$id = $this->subscriber_model->updateUser($_data);

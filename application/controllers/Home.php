@@ -14,7 +14,14 @@ class Home extends CI_Controller {
 			$this->load->view('user/index');
 		}
 		else{
-			header('Location:'.base_url().'login');
+			$query=$this->db->select('COUNT(uid) as cuid')->from('livia_user')->get();
+			$cuidData = $query->row()->cuid;
+			if($cuidData>=1)
+			{
+				header('Location:'.base_url().'login');
+			}
+			else
+				header('Location:'.base_url().'register');
 		}
 	}
 

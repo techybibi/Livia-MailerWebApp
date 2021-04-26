@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Welcome To Dashboard</title>
+    <title>Welcome To Livia Mailer</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
 
@@ -45,14 +45,14 @@
 									</a>
 								</div>
 								<div class="col-4 d-flex justify-content-center border border-danger">
-									<a href="<?php echo base_url()?>home/act_rules" class="tb_box_cat_home">
+									<a href="<?php echo base_url()?>email" class="tb_box_cat_home">
 
 										<img src="<?php echo base_url('images/icon/clipboard.svg')?>" width="110" height="110" class="rounded mx-auto d-block" alt="">
 										<h5>View Campain</h5>
 									</a>
 								</div>
 								<div class="col-4 d-flex justify-content-center border border-warning">
-									<a href="<?php echo base_url()?>home/notification" class="tb_box_cat_home">
+									<a href="<?php echo base_url()?>email/compose_email" class="tb_box_cat_home">
 
 										<img src="<?php echo base_url('images/icon/megaphone.svg')?>" width="110" height="110" class="rounded mx-auto d-block" alt="">
 										<h5>Start New Campain</h5>

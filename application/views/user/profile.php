@@ -7,7 +7,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Profile</title>
+	<title>Profile | Livia Mailer</title>
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
 
@@ -26,46 +27,25 @@
 <div class="content-page">
 	<div class="container">
 		<div class="row">
-						<div class="col-6">
-							<div class="card">
-								<div class="card-body p-3 text-center">
-									<?php
-
-									echo '<img src="'.base_url().'upload/proPic/'.$propic.'" width="310" height="340">';
-									echo '<h3>'.$name.'</h3>';
-									echo '<span>'.$course.'</span>';
-									?>
-								</div>
-							</div>
-						</div>
-						<div class="col-6 bg-light p-3">
+						<div class="col-12 bg-light p-3">
 											<h4 class="mb-3">Personal Details</h4>
 						<?php
-						echo	'<form method="post" action="'.base_url().'student/pro_update/'.$this->session->userdata('uid').'">';
+						echo	'<form method="post" action="'.base_url().'login/pro_update/'.$this->session->userdata('uid').'">';
+
+						echo			'<div class="form-group">';
+						echo			'<label for="email">Full Name:</label>';
+						echo			'<input type="text" name="name" value="'.$name.'" class="form-control" id="name">';
+						echo			'</div>';
 
 						echo			'<div class="form-group">';
 						echo			'<label for="email">Email address:</label>';
-						echo			'<input type="email" value="'.$email.'" class="form-control" id="email1" disabled>';
+						echo			'<input type="email"name="email" value="'.$email.'" class="form-control" id="email">';
 						echo			'</div>';
 
 						echo			'<div class="form-group">';
 						echo			'<label for="password">Password:</label>';
-						echo			'<input type="password" name="passwrd" class="form-control">';
-						echo			'</div>';
-
-						echo			'<div class="form-group">';
-						echo			'<label for="phone">Phone:</label>';
-						echo			'<input type="number" value="'.$phone.'" name="phone" class="form-control" disabled>';
-						echo			'</div>';
-
-						echo			'<div class="form-group">';
-						echo			'<label for="batch">Batch:</label>';
-						echo			'<input type="text" value="'.$batch.'" class="form-control" id="email1" disabled>';
-						echo			'</div>';
-
-						echo			'<div class="form-group">';
-						echo			'<label for="batch">Blood:</label>';
-						echo			'<input type="text" value="'.$blood.'" class="form-control" id="email1" disabled>';
+						echo			'<input type="password" name="password" class="form-control">';
+						echo 			'<small id="emailHelp" class="form-text text-muted">Enter Password Before Update</small>';
 						echo			'</div>';
 						echo				'<button type="submit" class="btn btn-primary">Update</button>';
 						echo	'</form>';

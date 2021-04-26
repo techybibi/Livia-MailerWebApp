@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Compose Message</title>
+	<title>Compose Message | Livia Mailer</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
 
@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url()?>vendor/remixicon/fonts/remixicon.css">
 	<link rel="stylesheet" href="<?php echo base_url()?>vendor/%40icon/dripicons/dripicons.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 	<link rel='stylesheet' href="<?php echo base_url()?>vendor/fullcalendar/core/main.css" />
 	<link rel='stylesheet' href="<?php echo base_url()?>vendor/fullcalendar/daygrid/main.css" />
@@ -39,18 +41,36 @@
 			<div class="card p-5">
 			<form class="email-form" method="post" action="<?php echo base_url()?>email/send_email" enctype="multipart/form-data">
 				<div class="form-group row">
-					<label for="multiple" class="col-sm-2 col-form-label">To:</label>
+					<label for="multiple" class="col-sm-2 col-form-label">Select Group</label>
 					<div class="col-sm-10">
-						<select name="to[]"  id="multiple" class="js-states form-control" multiple>
-
+						<select class="form-control" name="group" id="group">
+							<option>Select a group</option>
+							<option value="all">All</option>
 							<?php
-							$getEmailQuery=$this->db->query("SELECT * FROM livia_subscribers");
-							$getEmail = $getEmailQuery->result();
-							foreach($getEmail as $row)
+							$getGroupQuery=$this->db->query("select * from livia_group");
+							$getGroup = $getGroupQuery->result();
+							$i=1;
+							foreach($getGroup as $row)
 							{
-								echo '<option value="'.$row->EMAIL.'" selected="">'.$row->EMAIL.'</option>';
+								echo '<option value="'.$row->GName.'">'.$row->GName.'</option>';
 							}
 							?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="multiple" class="col-sm-2 col-form-label">To:</label>
+					<div class="col-sm-10">
+						<select name="to[]"  id="to_id" class="js-states form-control" multiple>
+<!---->
+<!--							--><?php
+//							$getEmailQuery=$this->db->query("SELECT * FROM livia_subscribers");
+//							$getEmail = $getEmailQuery->result();
+//							foreach($getEmail as $row)
+//							{
+//								echo '<option value="'.$row->EMAIL.'" selected="">'.$row->EMAIL.'</option>';
+//							}
+//							?>
 						</select>
 					</div>
 				</div>
@@ -102,3 +122,18 @@
 </body>
 
 </html>
+<script>
+		$('#group').change(function(){
+			var selected = $(this).val();
+
+				$.ajax({
+					url:'<?php echo base_url();?>group/fetchGroup',
+					type:'POST',
+					data:{selected :selected},
+					success:function(data)
+					{
+						$('#to_id').html(data);
+					}
+				})
+		})
+</script>

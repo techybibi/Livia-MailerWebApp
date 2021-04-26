@@ -37,4 +37,16 @@ class  Login_model extends CI_Model {
 			redirect('login','refresh');
 		}
 	}
+
+	function updateUser($data)
+	{
+		$this->db->where('UID', $data['UID']);
+		$dbdata = array(
+			"Full_Name" 		=> $data['FULL_NAME'],
+			"Email" 			=> $data['EMAIL'],
+			"Password" 			=> $data['PASSWORD'],
+		);
+		$this->db->update('livia_user', $dbdata);
+
+	}
 }

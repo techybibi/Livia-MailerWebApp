@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>View Message</title>
+	<title>View Message | Livia Mailer</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
 
@@ -26,34 +26,30 @@
 <div class="content-page">
 	<div class="container">
 		<div class="row">
-			<div class="row">
-				<div class="col-md-12 mb-3">
+				<div class="col-6 mb-3">
 					<h5 class="text-primary card-title"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-inbox" viewBox="0 0 16 16">
 							<path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438L14.933 9zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
-						</svg>  View Message</h5>
+						</svg>  View Log</h5>
 				</div>
-			</div>
 			<table class="table">
 				<thead class="thead-dark">
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">To</th>
+					<th scope="col">Group</th>
 					<th scope="col">Subject</th>
-					<th scope="col">Message</th>
+					<th scope="col">Date & Time</th>
 				</tr>
 				</thead>
 				<tbody>
 				<?php
 				$uid = $this->session->userdata('uid');
-				$query=$this->db->query("SELECT * FROM message WHERE uid=$uid");
-				$msgdata = $query->result();
-				foreach($msgdata as $row)
+				$getMailLogQuery=$this->db->query("SELECT * FROM livia_mail_log ORDER BY LID DESC");
+				$getMailLog = $getMailLogQuery->result();
+				foreach($getMailLog as $row)
 				{
 					echo '<tr>';
-					echo '<td class="pt-3-half">'.$row->pid.'</td>';
-					echo '<td class="pt-3-half" contenteditable="true">'.$row->to_id.'</td>';
-					echo '<td class="pt-3-half" contenteditable="true">'.$row->subject.'</td>';
-					echo '<td class="pt-3-half" contenteditable="true">'.$row->message.'</td>';
+					echo '<td class="pt-3-half" contenteditable="true">'.$row->GRP.'</td>';
+					echo '<td class="pt-3-half" contenteditable="true">'.$row->SUBJECT.'</td>';
+					echo '<td class="pt-3-half" contenteditable="true">'.$row->DATE.'</td>';
 					echo '</tr>';
 				}
 				?>

@@ -7,7 +7,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Welcome To Dashboard</title>
+	<title>Edit Subscribers | Livia Mailer</title>
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="http://iqonic.design/themes/instadash/html/assets/images/favicon.ico" />
 
@@ -44,7 +45,7 @@
 										$i=1;
 										foreach($getGroup as $row)
 										{
-											echo "<option value=".$row->GName.">".$row->GName."</option>";
+											echo '<option value="'.$row->GName.'">'.$row->GName.'</option>';
 										}
 										?>
 										<small id="emailHelp" class="form-text text-muted">Want to create a Group: <a href="<?php echo base_url()?>group">Click Here</a></small>

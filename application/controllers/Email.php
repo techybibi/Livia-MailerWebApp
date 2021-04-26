@@ -6,8 +6,18 @@ class Email extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->model('email_model');
 		$this->load->model('settings_model');
 		$this->load->helper(array('form', 'url'));
+	}
+	public function index()
+	{
+		if($this->session->userdata('uid')) {
+			$this->load->view('user/mail_log');
+		}
+		else{
+			header('Location:'.base_url().'login');
+		}
 	}
 	public function compose_email()
 	{
@@ -25,6 +35,7 @@ class Email extends CI_Controller {
 			'subject'	=>	$this->input->post('subject'),
 			'message'	=>	$this->input->post('message')
 		);
+		$grp	=	$this->input->post('group');
 		$sec	=	$this->input->post('time');
 		//$this->load->config('email');
 		$SMTPData = $this->settings_model->getSMTPData();
@@ -44,30 +55,46 @@ class Email extends CI_Controller {
 		$this->load->library('email',$config);
 
 		//$from = $this->config->item('smtp_user');
-		foreach ($data['TO'] as $adrs)
-		{
-			$from = $SMTPData[0]['email'];
-			$to = $adrs;
-			$subject = $data['subject'];
-			$message = $data['message'];
-			$uid = $this->session->userdata('uid');
+		try {
+			foreach ($data['TO'] as $adrs)
+			{
+				$from = $SMTPData[0]['email'];
+				$to = $adrs;
+				$subject = $data['subject'];
+				$message = $data['message'];
+				$uid = $this->session->userdata('uid');
 
-			$this->email->set_newline("\r\n");
-			$this->email->from($from);
-			$this->email->bcc($to);
-			$this->email->subject($subject);
-			$this->email->message($message);
-			if ($this->email->send()) {
-				//$this->admin_model->add_msg($_arr);
-				$msg['retnVal'] = "Successfully Completed";
-				$this->load->view('user/success',$msg);
-			} else {
-				//show_error($this->email->print_debugger());
-				$msg['retnVal'] = $this->email->print_debugger();
-				$this->load->view('user/success',$msg);
+				$this->email->set_newline("\r\n");
+				$this->email->from($from);
+				$this->email->bcc($to);
+				$this->email->subject($subject);
+				$this->email->message($message);
+				if ($this->email->send()) {
+					//$this->admin_model->add_msg($_arr);
+					$msg['retnVal'] = "Successfully Completed";
+					$this->load->view('user/success',$msg);
+				} else {
+					//show_error($this->email->print_debugger());
+					$msg['retnVal'] = $this->email->print_debugger();
+					$this->load->view('user/success',$msg);
+				}
+				sleep($sec);
 			}
-			sleep($sec);
+
+			$_arr=array(
+				'GRP'		=>	$grp,
+				'SUBJECT'	=>	$data['subject'],
+				'DATE'		=>	date("Y-m-d H:i:s")
+			);
+			$id = $this->email_model->addLog($_arr);
 		}
+		catch (Exception $e){
+			$msg['retnVal'] = "Something Went Wrong: ".$e;
+			$this->load->view('user/success',$msg);
+		}
+
+
+
 	}
 
 

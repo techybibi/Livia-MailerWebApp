@@ -109,4 +109,27 @@ class Group extends CI_Controller {
 			header('Location:'.base_url().'group');
 		}
 	}
+
+	function fetchGroup()
+	{
+		$selected = $this->input->post('selected');
+
+		if($selected == 'all')
+		{
+			$getEmailQuery = $this->db->query('select * from livia_subscribers');
+			$getEmail = $getEmailQuery->result();
+			foreach($getEmail as $row)
+			{
+				echo '<option value="'.$row->EMAIL.'" selected="">'.$row->EMAIL.'</option>';
+			}
+		}
+		else if($selected != 'all'){
+			$getEmailQuery = $this->db->query('select * from livia_subscribers where GRP = "'.$selected.'" ');
+			$getEmail = $getEmailQuery->result();
+			foreach($getEmail as $row)
+			{
+				echo '<option value="'.$row->EMAIL.'" selected="">'.$row->EMAIL.'</option>';
+			}
+		}
+	}
 }

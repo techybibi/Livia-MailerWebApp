@@ -62,5 +62,50 @@ class Login extends CI_Controller {
 		$this->load->view('user/auth-sign-in');
 	}
 
+	public function profile($uid)
+	{
+		if(!$this->session->userdata('uid'))
+		{
+			$this->load->view('login');
+		}
+		else{
+			$getProfileQuery=$this->db->query("SELECT * FROM livia_user WHERE UID = $uid");
+			$getProfile = $getProfileQuery->row();
+			$data = array(
+				'name'		=>	$getProfile->Full_Name,
+				'email'		=>	$getProfile->Email
+			);
+			$this->load->view('user/profile',$data);
+		}
+	}
+
+	public function pro_update($uid)
+	{
+		try {
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email');
+			$this->form_validation->set_rules('password', 'Password', 'required');
+
+			if ($this->form_validation->run()) {
+				$encrypted_password = $this->encrypt->encode($this->input->post('password'));
+
+				$data = array(
+					'UID' 				=> $this->session->userdata('uid'),
+					'FULL_NAME' 		=> $this->input->post('name'),
+					'EMAIL' 			=> $this->input->post('email'),
+					'PASSWORD' 			=> $encrypted_password,
+				);
+				$this->login_model->updateUser($data);
+				$rtn['retnVal'] = "Updated Successfully";
+				$this->load->view('user/success', $rtn);
+			}
+			else{
+				echo validation_errors();
+			}
+		} catch (Exception $e) {
+
+		}
+	}
+
 
 }
