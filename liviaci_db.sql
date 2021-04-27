@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2021 at 08:58 AM
+-- Generation Time: Apr 27, 2021 at 01:57 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -32,14 +32,6 @@ CREATE TABLE `livia_group` (
   `GName` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `livia_group`
---
-
-INSERT INTO `livia_group` (`GID`, `GName`) VALUES
-(1, 'Testing'),
-(5, 'Testing 2');
-
 -- --------------------------------------------------------
 
 --
@@ -52,13 +44,6 @@ CREATE TABLE `livia_mail_log` (
   `SUBJECT` longtext NOT NULL,
   `DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `livia_mail_log`
---
-
-INSERT INTO `livia_mail_log` (`LID`, `GRP`, `SUBJECT`, `DATE`) VALUES
-(3, 'Testing', 'BIBITH 1212 v', '2021-04-26 07:23:21');
 
 -- --------------------------------------------------------
 
@@ -79,13 +64,6 @@ CREATE TABLE `livia_smtp` (
   `smtp_timeout` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `livia_smtp`
---
-
-INSERT INTO `livia_smtp` (`SMTP_ID`, `protocol`, `email`, `smtp_host`, `smtp_port`, `smtp_user`, `smtp_pass`, `smtp_crypto`, `mailtype`, `smtp_timeout`) VALUES
-(1, 'smtp', 'mail@hostmargin.com', 'email-smtp.us-east-1.amazonaws.com', 465, 'AKIAZXBGLWT3ZOLRJVRW', 'BKqlLcirllmp3/f5bbXKMXJhs5+y+qS7aZy74KGsBIG3', 'ssl', 'html', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -101,15 +79,6 @@ CREATE TABLE `livia_subscribers` (
   `MODIFIED` datetime NOT NULL,
   `STATUS` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `livia_subscribers`
---
-
-INSERT INTO `livia_subscribers` (`UID`, `EMAIL`, `NAME`, `GRP`, `CREATED`, `MODIFIED`, `STATUS`) VALUES
-(9, 'bibith.mathew@gmail.com', 'Bibith K Mathew', 'Testing', '2021-04-26 06:02:52', '2021-04-26 06:02:52', 'ACTIVE'),
-(10, 'hostmarginindia@gmail.com', 'Hostmargin', 'Testing', '2021-04-26 06:02:52', '2021-04-26 06:02:52', 'ACTIVE'),
-(11, 'hostmalabar@gmail.com', 'Hostmalabar', 'Testing 2', '2021-04-26 06:02:52', '2021-04-26 06:02:52', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -173,7 +142,7 @@ ALTER TABLE `livia_group`
 -- AUTO_INCREMENT for table `livia_mail_log`
 --
 ALTER TABLE `livia_mail_log`
-  MODIFY `LID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `LID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `livia_smtp`
@@ -185,13 +154,13 @@ ALTER TABLE `livia_smtp`
 -- AUTO_INCREMENT for table `livia_subscribers`
 --
 ALTER TABLE `livia_subscribers`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17816;
 
 --
 -- AUTO_INCREMENT for table `livia_user`
 --
 ALTER TABLE `livia_user`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
